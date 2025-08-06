@@ -1,1 +1,66 @@
-{\n    "name": "laravel/ecommerce",\n    "type": "project",\n    "require": {\n        "php": "^8.0",\n        "laravel/framework": "^10.0"\n    },\n    "autoload": {\n        "psr-4": {\n            "App\\": "app/"\n        }\n    },\n    "scripts": {\n        "post-autoload-dump": [\n            "Illuminate\Foundation\ComposerScripts::postAutoloadDump",\n            "php artisan package:discover --ansi"\n        ]\n    }\n}
+{
+    "name": "dev-sajid007/simple-laravel-ecommerce",
+    "type": "project",
+    "description": "A simple Laravel ecommerce project integrated with CRM SaaS system",
+    "keywords": ["laravel", "ecommerce", "crm", "integration"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.1",
+        "guzzlehttp/guzzle": "^7.2",
+        "laravel/framework": "^10.10",
+        "laravel/sanctum": "^3.2",
+        "laravel/tinker": "^2.8"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.9.1",
+        "laravel/pint": "^1.0",
+        "laravel/sail": "^1.18",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^7.0",
+        "phpunit/phpunit": "^10.1",
+        "spatie/laravel-ignition": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
